@@ -1,0 +1,25 @@
+{
+  "name": "how-to-guide",
+  "version": "1.0.0",
+  "description": "how to guide website describing how to make a simple twitter bot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/travisen/how-to-guide.git"
+  },
+  "author": "Travis Nykaza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/travisen/how-to-guide/issues"
+  },
+  "homepage": "https://github.com/travisen/how-to-guide#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.5"
+  }
+}
