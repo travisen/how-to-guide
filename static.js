@@ -14,15 +14,11 @@ app.set('port', 3003);
 app.use('/static', express.static('public'));
 
 app.get('/',function(req,res){
-  var content = {};
-  content.type = "GET";
-  res.render('home', content);
+  res.render('home');
 });
 
 app.post('/', function(req,res){
-  var content = {};
-  content.type = "POST";
-  res.render('home', content);
+  res.render('home');
 });
 
 // app.use(function(req,res){
