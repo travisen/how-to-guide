@@ -21,6 +21,10 @@ app.get('/intro',function(req,res){
   res.render('introduction.handlebars');
 });
 
+app.get('/api-part1',function(req,res){
+  res.render('api-part1.handlebars');
+});
+
 //app.post('/', function(req,res){
 //  res.render('home');
 //});
