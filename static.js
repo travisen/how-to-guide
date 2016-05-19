@@ -25,6 +25,10 @@ app.get('/api-part1',function(req,res){
   res.render('api-part1.handlebars');
 });
 
+app.get('/api-part2',function(req,res){
+  res.render('api-part2.handlebars');
+});
+
 //app.post('/', function(req,res){
 //  res.render('home');
 //});
