@@ -13,13 +13,17 @@ app.set('view engine', 'handlebars');
 app.set('port', 3003);
 app.use('/static', express.static('public'));
 
-app.get('/',function(req,res){
+app.get('/home',function(req,res){
   res.render('home');
 });
 
-app.post('/', function(req,res){
-  res.render('home');
+app.get('/intro',function(req,res){
+  res.render('introduction.handlebars');
 });
+
+//app.post('/', function(req,res){
+//  res.render('home');
+//});
 
 // app.use(function(req,res){
 //   res.status(404);
