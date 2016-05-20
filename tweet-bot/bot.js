@@ -8,12 +8,12 @@
         console.log('Data from our call[%s]', data);
         // response stores an object containing the data recieved
         var response = JSON.parse(data);
-        console.log("This is the tweet's contents:", response.text,
-          "This is the tweet's id:", response.id_str,
-          "This is the username of whomever sent the tweet:",
-           response.user.screen_name,
-          "This is the name of whomever sent the tweet:",
-          response.user.name);
+        //console.log("This is the tweet's contents:", response.text,
+          //"This is the tweet's id:", response.id_str,
+          //"This is the username of whomever sent the tweet:",
+          // response.user.screen_name,
+         // "This is the name of whomever sent the tweet:",
+         // response.user.name);
     };
 
     var Twitter = require('twitter-node-client').Twitter;
@@ -29,7 +29,9 @@
 
     var twitter = new Twitter(config);
 
-    twitter.getTweet({ id: '732595450746970112'}, error, success);
+    //twitter.getTweet({ id: '732595450746970112'}, error, success);
+
+    twitter.postTweet({ status: 'Hi, I like cats when Im happy'}, error, success);
 
     //Example calls
 

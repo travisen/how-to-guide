@@ -33,6 +33,10 @@ app.get('/api-part3',function(req,res){
   res.render('api-part3.handlebars');
 });
 
+app.get('/api-part4',function(req,res){
+  res.render('api-part4.handlebars');
+});
+
 //app.post('/', function(req,res){
 //  res.render('home');
 //});

@@ -1,8 +1,25 @@
 <div class="container">
     <div class="row">
       <div class="one-column" style="margin-top: 10%">
-        <h1>Getting started with Twitter and getting a Twitter API key</h1>
-        <h5>This page will show you how to make a Twitter Account and signup for a Twitter Developer API Key</h5>
+        <h1>Making a simple twitter bot</h1>
+        <h5>In this module you will learn how to make your twitter bot post a tweet!</h5>
+
+        <h3>Our Bot's First Status Update</h3>
+        <p>Okay, so before adding additional functionality such as automating tweats, or creating a list of tweets which our bot could randomly choose from, let's just start with a simple status update!
+        We can use our original code.<p>
+        <img src="/static/images/basicapicallsetup.png" style="max-width: 75%">
+        <p>But now we will be using a different function; namely, the postTweet function. There is only one required object that must be manually declared for a posted tweet.
+        Not so surprisingly, it is the actual content of the tweet! Fortuneately, we only have to add one line of code to post a tweet:
+        <pre><code>twitter.postTweet({ status: 'enter content here'}, error, success);</code></pre>
+        According to Twitter's API documentation, every tweet object has a status attribute.
+        This is why in the above function declaration we include <code>status:</code>. We then enter whatever we want to tweet, making sure to surround it in quotations as the status attribute must contain a string.
+        So, if we use the following: 
+        <pre><code>twitter.postTweet({ status: 'Hi, I like cats when Im happy'}, error, success);
+        </code></pre> It will yield the following tweet:</p>
+
+        <img src="/static/images/firsttweet.png" style="max-width: 75%">
+        <p>You've now made your first tweet using Twitter's API!</p>
+
 
         <a class="button button-primary" href="/home">Previous</a>
         <a class="button button-primary" href="/api-part1">Next</a>
