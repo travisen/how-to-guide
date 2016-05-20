@@ -1,6 +1,3 @@
-var express = require('express');
-
-var router = express.Router();
     //Callback functions
     // used for logging errors
     var error = function (err, response, body) {
@@ -9,14 +6,17 @@ var router = express.Router();
     // used for recieving data
     var success = function (data) {
         console.log('Data from our call[%s]', data);
-        var response = JSON.parse(data); // response stores an object containing the data recieved
+        // response stores an object containing the data recieved
+        var response = JSON.parse(data);
         console.log("This is the tweet's contents:", response.text,
-          response.id_str, response.user.screen_name);
+          "This is the tweet's id:", response.id_str,
+          "This is the username of whomever sent the tweet:",
+           response.user.screen_name,
+          "This is the name of whomever sent the tweet:",
+          response.user.name);
     };
 
     var Twitter = require('twitter-node-client').Twitter;
-
-    //var Twitter = require('twitter-js-client').Twitter;
 
     //Get this data from your twitter apps dashboard
     var config = {
@@ -29,23 +29,8 @@ var router = express.Router();
 
     var twitter = new Twitter(config);
 
-    twitter.getTweet({ id: '732595450746970112'}, error,
-     success);
+    twitter.getTweet({ id: '732595450746970112'}, error, success);
 
-    router.get('/', function(req, res, next) {
-  // https://dev.twitter.com/rest/reference/get/statuses/user_timeline
-  client.get('statuses/user_timeline', { screen_name: 'nodejs', count: 20 },
-   function(error, tweets, response) {
-    if (!error) {
-      res.status(200).render('index', { title: 'Express', tweets: tweets });
-    }
-    else {
-      res.status(500).json({ error: error });
-      }
-    });
-  });
-
-  module.exports = router;
     //Example calls
 
     //twitter.getUserTimeline({ screen_name: 'theAbrasiveBot', count: '1'}, error, success);

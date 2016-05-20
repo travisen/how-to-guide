@@ -150,9 +150,28 @@
         <p>For our purposes we are just interested in both the "text" attribute which contains the text contained in the tweet, and the "id_str" attribute which is a completely unique to this specific tweet.</p>
 
         <h3>Parsing Out Specific Data from a JSON Request</h3>
-        <p>We now are going to construct a simple function that will just return the name and screen name of the user, and the id_str and content of a tweet.</p>
+        <p>We now are going to modify the success function to return the following: the screen name of the user, and the id_str and content of a specific tweet.</p>
+        <p> Currently, we are recieving a whole lot of information, most of which is irrelavent. We have to modify the success function to filter out the information we want, printing it to the console. As a reminder, here was our original code:
 
+        <img src="/static/images/basicapicallsetup.png" style="max-width: 75%"></p>
 
+        <p>Notice that in <pre><code>twitter.getTweet({ id: '732595450746970112'}, error, success);</code></pre>
+        error and success are functions defined on lines 2 - 7. These type of functions are known as callback functions. These functions are passes as parameters to the twitter.getTweet function on <b>line 24</b>. These callback functions uses AJAX or Asynchronous JavaScript and XML. AJAX allows us to grab data from the Twitter API. </p>
+        <p>Let's now modify the success function so that we can select out the specific data we want and then print it to the console: 
+        <img src="/static/images/modifiedsuc.png" style="max-width: 75%">
+        <p>The following line of code parses the JSON data recieved into a format that is easier to use in javascript. This parsed data is then stored in the response object.</p>
+        <pre><code>var response = JSON.parse(data);</code></pre>
+        </p>
+        <p>We then access the different attributes by using
+        <pre><code>[object.name].[attribute]</code></pre>
+        or, more specifically, to access the tweet's textual contents we use:
+        <code>response.text</code>
+        which prints the following in the console:
+        <pre><code>AN ANGRY TEST</code></pre>
+        </p>
+
+        <h3>What now?</h3>
+        <p>Now that you hopefully have a pretty good idea of how to work with a JSON object, it is time to begin working on a twitter bot.</p>
 
         <a class="button button-primary" href="/api-part2">Previous</a>
         <a class="button button-primary" href="/api-part4">Next</a>
