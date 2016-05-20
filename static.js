@@ -41,9 +41,14 @@ app.get('/api-part4',function(req,res){
   res.render('api-part4.handlebars');
 });
 
+app.get('/api-part5',function(req,res){
+  res.render('api-part5.handlebars');
+});
+
 app.get('/finished',function(req,res){
   res.render('finished.handlebars');
 });
+
 //app.post('/', function(req,res){
 //  res.render('home');
 //});

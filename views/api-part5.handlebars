@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+      <div class="one-column" style="margin-top: 10%">
+        <h1>Responding to Mentions and Scheduled Tweets</h1>
+        <h5>This last module will show you how to respond to another twitter account that mentions you and how to have you bot periodically post a tweet at some sort of interval. GET PUMPED!</h5>
+
+        <h3>Responding to Mentions</h3>
+
+        <p>Let's begin by learning how to respond to mentions. A mention is simply when a user refers to your twitter handle, <b>@yourBotUserName</b>. For simplicity we are just going to have two programmer responses. The first will be a positive response which will be triggered by the words <em>your majesty</em> if the originating tweet and the second will be a hostile, negative response when <em>your majesty</em> is not contained in the tweet. So, let's get started!</p>
+
+        <p>We first need a way to search a string for a specific substring. So, let's build and test that function first. I'm gonna give you the code first. Try and figure out what is going on and how we will use this with Twitter's API! I'll then walk through it.</p>
+
+        <img src="/static/images/stringsearch.png" style="max-width: 100%">
+
+        <p>In sum here is what the string does. It takes a parameter (which should be a string) and tests whether "your majesty" is located in it. If it is, the nice response is returned, if it isn't the rude response is returned. I'm assuming that you can tell which is which for the sake of humanity... The output of each function call is located next to the call on <b>lines 64 and 65</b>. The only confusing part of the searchString function, I believe, is <b>line 55</b> <code>if(aString.indexOf('your majesty')!= -1)</code> the indexOf function only returns a -1 if 'your majesty' is not found otherwise it returns the index of where the phrase, 'your majesty' begins. Now let's combine all this with a new API call!</p>
+
+        <p>Let's make one last modification to our searchString function so we can mention whomever mentioned our bot. We do this by just adding a new parameter which takes the username of who we will respond to and by adding the following code to both return statements<code>+'@'+respondTo</code> It should now look like this. </p>
+
+        <img src="/static/images/stringmodmen.png" style="max-width: 100%">
+        <p>We now will make tow separate API calls. The first will be our new call:
+        <pre><code>twitter.getMentionsTimeline({ count: '1'}, error, success);</code></pre>
+        This new call retrieves any mentions from other users in our timeline.<code>count: '1'</code> retrieves only the most recent tweet. This returns a bunch of stuff, but we are only interested in the username of whomever mentioned us and what they said. We now make a second call; however, this call must be made from within our success function, so we have access to the most recent data that was retrieved using AJAX. We will be using the postTweet command from the previous module but with a twist. See if you can see what we didn differently: <pre><code>twitter.postTweet({ status: searchString(response[0].text,
+          response[0].user.screen_name)}, error, success);</code></pre>
+        We are calling our searchString function within the parameter list of postTweet! We then use the data retriever from the getMentions calls from before by using <code>response[0].text</code> and <code>response[0].user.screen_name</code>We need to use <code>[0]</code> as the getMentionsTimeline call returns an array of objects. Though we are only asking for one it still returns an array with a single object. Arrays start at 0, so to access the first element, we must use <code>arrayname[0]</code> or in this case <code>response[0]</code>.</p>
+
+        <p>I'll now show you the mentions made towards out bot and his responses. Unfortunately, it is beyond the scope of this guide to go over how to host and continuously monitor the mentions made towards out bot. However, this would make a great and shouldn't be too difficult to implement. You could have a function which checks for the most recent mentions every x minutes (or even seconds). The function could then post a response. But for our bot to react to mentions for now, we must manually run our javascript file. Here is our conversation (I even made a twitter account for myself :))</p>
+
+        <img src="/static/images/mention1.png" style="max-width: 100%">
+        <img src="/static/images/response1.png" style="max-width: 100%">
+        <img src="/static/images/mention2.png" style="max-width: 100%">
+        <img src="/static/images/response2.png" style="max-width: 100%">
+
+        <p>I am not so sure why <code>@TravisNykaza</code> is not linking in the last image; however, that can be explored at another time.</p>
+
+        <h3>Scheduling Tweets</h3>
+        <p>This final module should be relatively quick and is differnt as i will be left to you to figure it out! First, we must install another node.js addon called, node-scheduler. This will allow us to easily schedule dats and times when we'd like to run functions. We can install this by running <code>npm install node-schedule</code> from the command line. We must also include <code>var schedule = require('node-schedule');</code> in the file where we will be scheduling the tweet. node-schedule uses cron style formatting which you can <a href="http://www.adminschoice.com/crontab-quick-reference">read more about here</a> Let's try it out.</p>
+
+        <img src="/static/images/setschde.png" style="max-width: 100%">
+        <p>The above code logs the last two lines of the poem Invictus on December 21, 2016 at 5:30am.</code>. We could pretty easily extend this to schedule tweets. To do this, you would create the a function with a scheduled date and then insert the function that you would like to run inside of it! Finally, if youd'd want to tweet at certian intervals you could use a <a href="https://www.npmjs.com/package/setinterval-plus">node package called setInterval.</a> </p>
+
+        <h3>The End</h3>
+        <p>Well, we have learned a lot of information! Feel free to reread this guide at any time. I hope you found it useful! Hopefully, you now have a reasonable foundation to begin coding your own more complicated twitter bots.</p>
+
+        <a class="button button-primary" href="/api-part4">Previous</a>
+        <a class="button button-primary" href="/finished">Final page</a>
+
+    </div>
+</div>
