@@ -20,9 +20,32 @@
         <img src="/static/images/firsttweet.png" style="max-width: 75%">
         <p>You've now made your first tweet using Twitter's API!</p>
 
+        <h3>Out Bot's first Randomized Tweet</h3>
+        <p>In this section we are going to add to what we learning above. We will be using some basic javascript to create an array of possible phrases that our bot can tweet.We will randomly decided what gets posted.</p>
 
-        <a class="button button-primary" href="/home">Previous</a>
-        <a class="button button-primary" href="/api-part1">Next</a>
+        <p>Let's break this task into different parts. Here is what we have to do to achieve our goal:
+            <ul>
+                <li> Generate a random number</li>
+                <li> Create an array of phrases</li>  
+                <li> Somehow use there two separate pieces to randomly select a phrase from our array</li>
+                <li>Send whatever phrase gets chosen to Twitter's API</li>
+            </ul></p>
+
+        <p>Let's start from the beginning. We can create a random integer using two of javascripts built in functions: <code>Math.floor</code> and <code>Math.random</code>. Before giving you the full code, I'll explain what I'm thinking. Let's create an array of 5 random phrases. Each phrase can be assigned an integer from 0 to 4 (giving use 5 in total). So, our random number generator should return an integer from 0 to 4. However, the Math.random function returns a random number from 0 to 1, so we must use Math.floor to return an integer and not a decimal. Here's my code:
+        <pre><code>var randomnumber = Math.floor(Math.random() * (4 - 0 + 1)) + 0;</code></pre></p>
+        <p>Now let's create an array of phrases with integer keys. The code for this is pretty simple:</p>
+        <pre><code>var botPhrases = ["I am in a very bad mood", "STOP BOTHERING ME", "Ugh, what?", "K", 
+            "I have lots of words. I use all the best words"];
+            };</code></pre>
+            Each element in the array can be accessed using <code>botPhrases[number]</code>  For example, <code>botPhrases[0]</code> returns <code>"I am in a very bad mood".</code>
+        </p>
+        <p>Now let us combine everything and post our first randomized tweet. Here is what it looks like:</p>
+        <img src="/static/images/randphrase.png" style="max-width: 75%">
+        <p>And, these were my tweets after running my js file 3 times.</p>
+        <img src="/static/images/randtweets.png" style="max-width: 75%">
+        <p>The phraseGen function returns a string. We call phraseGen within the API call on line 44 which generates a random phrase and then sends it to Twitter's API. See, not half bad!</p>
+        <a class="button button-primary" href="/api-part3">Previous</a>
+        <a class="button button-primary" href="/api-part5">Next</a>
 
     </div>
 </div>

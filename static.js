@@ -13,6 +13,10 @@ app.set('view engine', 'handlebars');
 app.set('port', 3003);
 app.use('/static', express.static('public'));
 
+app.get('/',function(req,res){
+  res.render('home');
+});
+
 app.get('/home',function(req,res){
   res.render('home');
 });

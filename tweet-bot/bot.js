@@ -31,7 +31,19 @@
 
     //twitter.getTweet({ id: '732595450746970112'}, error, success);
 
-    twitter.postTweet({ status: 'Hi, I like cats when Im happy'}, error, success);
+    //twitter.postTweet({ status: 'Hi, I like cats when Im happy'}, error, success);
+
+    var phraseGen = function(){
+    var randomnumber = Math.floor(Math.random() * (4 - 0 + 1));
+    //console.log(randomnumber);
+    var botPhrases = ["I am in a very bad mood", "STOP BOTHERING ME", "Ugh, what?", "K", 
+    "I have lots of words. I use all the best words"];
+    return botPhrases[randomnumber];
+    };
+
+    twitter.postTweet({ status: phraseGen()}, error, success);
+
+   // console.log(botPhrases[randomnumber]);
 
     //Example calls
 
