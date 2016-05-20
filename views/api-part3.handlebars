@@ -2,7 +2,7 @@
     <div class="row">
       <div class="one-column" style="margin-top: 10%">
         <h1>Dissecting a JSON Response</h1>
-        <h5>On this page we will be looking at what a JSON response actualy looks like. We will then learn how to pick out what we specifically want from the response.</h5>
+        <h5>On this page we will be looking at what a JSON response actually looks like. We will then learn how to pick out what we specifically want from the response.</h5>
 
         <p>You may be thinking that after our fancy call to a specific tweet that we will just get the tweet's text back. NOPE. We will be returning a whole smorgsboard of attributes related to a tweet object. Don't freak out.</p>
 
@@ -112,7 +112,6 @@
         </code></pre>
         <p> Okay, you didn't freak out, did you...? We are not going through that whole thing nor will we be using much of it. I'm going to draw your attention to what we <i>will</i> be using.</p>
 
-        <p>I want to draw your attention to the bits that we will be using.</p>
        <pre><code>
             "user":  {
                 "id": 731282217935208400,
@@ -150,16 +149,22 @@
         <p>For our purposes we are just interested in both the "text" attribute which contains the text contained in the tweet, and the "id_str" attribute which is a completely unique to this specific tweet.</p>
 
         <h3>Parsing Out Specific Data from a JSON Request</h3>
-        <p>We now are going to modify the success function to return the following: the screen name of the user, and the id_str and content of a specific tweet.</p>
-        <p> Currently, we are recieving a whole lot of information, most of which is irrelavent. We have to modify the success function to filter out the information we want, printing it to the console. As a reminder, here was our original code:
+        <p>We now are going to modify the success function to return the following: 
+          <ul><ul>
+            <li>the screen name of the user
+            <li>the id_str
+            <li>the content of a specific tweet.
+          </ul></ul>
+          </p>
+        <p> Currently, we are recieving a whole lot of information, most of which is irrelavent for now. We have to modify the success function to filter out the information we want, printing it to the console. As a reminder, here was our original code:
 
         <img src="/static/images/basicapicallsetup.png" style="max-width: 75%"></p>
 
         <p>Notice that in <pre><code>twitter.getTweet({ id: '732595450746970112'}, error, success);</code></pre>
-        error and success are functions defined on lines 2 - 7. These type of functions are known as callback functions. These functions are passes as parameters to the twitter.getTweet function on <b>line 24</b>. These callback functions uses AJAX or Asynchronous JavaScript and XML. AJAX allows us to grab data from the Twitter API. </p>
+        error and success are functions defined on lines 2 - 7. These type of functions are known as callback functions. These functions are passed as parameters to the twitter.getTweet function on <b>line 24</b>. These callback functions use AJAX or Asynchronous JavaScript and XML. AJAX allows us to grab data from the Twitter API. </p>
         <p>Let's now modify the success function so that we can select out the specific data we want and then print it to the console: 
         <img src="/static/images/modifiedsuc.png" style="max-width: 75%">
-        <p>The following line of code parses the JSON data recieved into a format that is easier to use in javascript. This parsed data is then stored in the response object.</p>
+        <p>The following line of code parses the JSON data recieved into a format that is easier to use in javascript. This parsed data is then stored in the <code>response</code> object.</p>
         <pre><code>var response = JSON.parse(data);</code></pre>
         </p>
         <p>We then access the different attributes by using

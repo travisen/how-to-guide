@@ -5,11 +5,13 @@
         <h5>Now that we understand what an API is. Let's make our first Twitter API request using TwitterJSClient and discuss the contents of that request.</h5>
 
         <h3>Preparing for our First API Request</h3>
-        <p>The first API call we will make allows us to retrieve a particular status update (and all the data associated with it) also called a tweet.For security, Twitter uses Oauth. The combination of the four keys which we found in the last module, allows us to access Twitter's API.</p>
+        <p>The first API call we will make will allow us to retrieve a particular status update or tweet (and all the data associated with it). For security, Twitter uses Oauth. The combination of the four keys which we found in the last module, allows us to access Twitter's API.</p>
 
         <p>Before making our first call, we have to setup our local enviornment. For this exercise it is assumed that you have node.js installed. Create a new directory (or folder) where we will store our twitter bot. We will be using a library called TwitterJSClient which will allow us to more easily access Twitter's API. A <b>library</b> is a set of precompiled commands that will let us more quickly interact and do useful (maybe) things using the Twitter API. You can install the TwitterJSClient using <code>npm install twitter-node-client</code> in the command line. You then must include <code>var Twitter = require('twitter-node-client').Twitter;</code> at the top of the javascript file where you will be making your bot. This is what your .js file should contain:</p>
+
         <img src="/static/images/basicapicallsetup.png" style="max-width: 75%">
-        <p><b>Lines 1 - 4</b> are used for logging any errors that may occur. <b>Lines 5 - 7</b> logs any data that is recieved from our call. <b>Line 9</b> lets us use the TwitterJsClient which you hopefully installed. The object "config" stores all our api keys that are needed to access Twitter's API. You must paste each each value in between the quotations marks. We then create a new variable object which will let us access the various calls that the TwitterJSClient library provides to us. When the twitter object is created in <b>line 22</b> we save our the config object in it. Finally, <b>line 24</b> describes what data we wish to retrieve from Twitter. Line 24 is what actually sends our API request to Twitter. We will look at the actual contents of the request in the next section of this module. Let's at the getTweet command more closely. 
+
+        <p>Much of this is referred to as "boilerplate code" and will be used multiple times.<b> Lines 1 - 4</b> are used for logging any errors that may occur. <b>Lines 5 - 7</b> logs any data that is recieved from our call. <b>Line 9</b> lets us use the TwitterJsClient which you hopefully installed. The object <code>config</code> stores all our api keys that are needed to access Twitter's API. You must paste each each value in between the quotation marks. We then create a new variable object called <code>twitter</code> on <b>line 22</b> which will let us access the various calls that the TwitterJSClient library provides to us. When the twitter object is created in <b>line 22</b> we save our the config object in it. Finally, <b>line 24</b> describes what data we wish to retrieve from Twitter. Line 24 is what actually sends our API request to Twitter. We will look at the actual contents of the request in the next section of this module. Let's at the getTweet command more closely. 
         <ul>
             <li> twitter - this is the object that we created that stores our key data.</li>
             <li>getTweet - this specifies what type of call we wish to make to Twitter</li>
@@ -40,10 +42,11 @@
             <li>/732595450746970112 - the unique id number of a specific tweet.</li>
             <li>.json - the type of data we will be getting back</li>
         </ul>
+        <p>Remember that API requests will look different depending on what API call we are actually using.</p>
 
 
         <h3>Prepare yourself</h3>
-        <p>Now we are ready to see what this request returns! Click next to continue. It ain't pretty.</p>
+        <p>Now we are ready to see what this request returns! Click next to continue. Though be forwarned, it ain't pretty.</p>
         <a class="button button-primary" href="/api-part1">Previous</a>
         <a class="button button-primary" href="/api-part3">Next</a>
 

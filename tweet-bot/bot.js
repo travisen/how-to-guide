@@ -33,15 +33,15 @@
 
     //twitter.postTweet({ status: 'Hi, I like cats when Im happy'}, error, success);
 
-    var phraseGen = function(){
-    var randomnumber = Math.floor(Math.random() * (4 - 0 + 1));
+   // var phraseGen = function(){
+   // var randomnumber = Math.floor(Math.random() * (4 - 0 + 1));
     //console.log(randomnumber);
-    var botPhrases = ["I am in a very bad mood", "STOP BOTHERING ME", "Ugh, what?", "K", 
-    "I have lots of words. I use all the best words"];
-    return botPhrases[randomnumber];
-    };
+   // var botPhrases = ["I am in a very bad mood", "STOP BOTHERING ME", "Ugh, what?", "K", 
+   // "I have lots of words. I use all the best words"];
+   // return botPhrases[randomnumber];
+   // };
 
-    twitter.postTweet({ status: phraseGen()}, error, success);
+    //twitter.postTweet({ status: phraseGen()}, error, success);
 
    // console.log(botPhrases[randomnumber]);
 
@@ -49,7 +49,7 @@
 
     //twitter.getUserTimeline({ screen_name: 'theAbrasiveBot', count: '1'}, error, success);
 
-    //twitter.getMentionsTimeline({ count: '10'}, error, success);
+    //twitter.getMentionsTimeline({ count: '1'}, error, success);
 
    // twitter.getHomeTimeline({ count: '10'}, error, success);
 

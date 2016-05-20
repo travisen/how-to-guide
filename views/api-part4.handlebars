@@ -9,19 +9,18 @@
         We can use our original code.<p>
         <img src="/static/images/basicapicallsetup.png" style="max-width: 75%">
         <p>But now we will be using a different function; namely, the postTweet function. There is only one required object that must be manually declared for a posted tweet.
-        Not so surprisingly, it is the actual content of the tweet! Fortuneately, we only have to add one line of code to post a tweet:
+        Not so surprisingly, it is the actual content of the tweet! Fortunately, we only have to add one line of code to post a tweet:
         <pre><code>twitter.postTweet({ status: 'enter content here'}, error, success);</code></pre>
         According to Twitter's API documentation, every tweet object has a status attribute.
         This is why in the above function declaration we include <code>status:</code>. We then enter whatever we want to tweet, making sure to surround it in quotations as the status attribute must contain a string.
         So, if we use the following: 
-        <pre><code>twitter.postTweet({ status: 'Hi, I like cats when Im happy'}, error, success);
-        </code></pre> It will yield the following tweet:</p>
+        <pre><code>twitter.postTweet({ status: 'Hi, I like cats when Im happy'}, error, success);</code></pre> It will yield the following tweet:</p>
 
         <img src="/static/images/firsttweet.png" style="max-width: 75%">
         <p>You've now made your first tweet using Twitter's API!</p>
 
-        <h3>Out Bot's first Randomized Tweet</h3>
-        <p>In this section we are going to add to what we learning above. We will be using some basic javascript to create an array of possible phrases that our bot can tweet.We will randomly decided what gets posted.</p>
+        <h3>Our Bot's first Randomized Tweet</h3>
+        <p>In this section we are going to add to what we learning above. We will be using some basic javascript to create an array of possible phrases that our bot can tweet. We will randomly decided what gets posted.</p>
 
         <p>Let's break this task into different parts. Here is what we have to do to achieve our goal:
             <ul>
@@ -33,7 +32,7 @@
 
         <p>Let's start from the beginning. We can create a random integer using two of javascripts built in functions: <code>Math.floor</code> and <code>Math.random</code>. Before giving you the full code, I'll explain what I'm thinking. Let's create an array of 5 random phrases. Each phrase can be assigned an integer from 0 to 4 (giving use 5 in total). So, our random number generator should return an integer from 0 to 4. However, the Math.random function returns a random number from 0 to 1, so we must use Math.floor to return an integer and not a decimal. Here's my code:
         <pre><code>var randomnumber = Math.floor(Math.random() * (4 - 0 + 1)) + 0;</code></pre></p>
-        <p>Now let's create an array of phrases with integer keys. The code for this is pretty simple:</p>
+        <p>Now let's create an array of phrases. The code for this is pretty simple:</p>
         <pre><code>var botPhrases = ["I am in a very bad mood", "STOP BOTHERING ME", "Ugh, what?", "K", 
             "I have lots of words. I use all the best words"];
             };</code></pre>
@@ -44,6 +43,9 @@
         <p>And, these were my tweets after running my js file 3 times.</p>
         <img src="/static/images/randtweets.png" style="max-width: 75%">
         <p>The phraseGen function returns a string. We call phraseGen within the API call on line 44 which generates a random phrase and then sends it to Twitter's API. See, not half bad!</p>
+
+        <h3>Attack of the Robots: Origins</h3>
+        <p>You now can create a basic twitter bot! This is a great starting point before delving into creating more sophisticated twitter bots.</p>
         <a class="button button-primary" href="/api-part3">Previous</a>
         <a class="button button-primary" href="/api-part5">Next</a>
 
